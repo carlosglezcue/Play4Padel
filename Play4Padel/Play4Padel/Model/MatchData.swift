@@ -20,7 +20,7 @@ enum PositionType: String, Codable, CaseIterable {
 
 @Model
 final class MatchData {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var date: Date?
     var firstUserSet: Int?
     var secondUserSet: Int?
