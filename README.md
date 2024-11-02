@@ -1,7 +1,7 @@
 # Play4padel
 
 ## Overview
-Padel Match Tracker is a multi-platform app developed with Swift 6, SwiftUI, and SwiftData. Designed for iOS, iPadOS, watchOS, and visionOS, the app allows padel players to effortlessly store, track, and analyze their match data. Users can log match statistics and view detailed stats, while also having access to a unique feature: visualizing player positioning on a virtual padel court alongside performance stats.
+Play4Padel is a multi-platform app developed with Swift 6, SwiftUI, and SwiftData. Designed for iOS, iPadOS, watchOS, and visionOS, the app allows padel players to effortlessly store, track, and analyze their match data. Users can log match statistics and view detailed stats, while also having access to a unique feature: visualizing player positioning on a virtual padel court alongside performance stats.
 
 
 ## Features
@@ -18,11 +18,11 @@ Padel Match Tracker is a multi-platform app developed with Swift 6, SwiftUI, and
 
 
 ## Installation
-To install Padel Match Tracker, clone the repository and open the project in Xcode. Ensure you have the latest version of Xcode and a compatible device or simulator.
+To install Play4Padel, clone the repository and open the project in Xcode. Ensure you have the latest version of Xcode and a compatible device or simulator.
 ```
-git clone https://github.com/yourusername/PadelMatchTracker.git
-cd PadelMatchTracker
-open PadelMatchTracker.xcodeproj
+git clone https://github.com/carlosglezcue/play4padel.git
+cd play4padel
+open Play4Padel.xcodeproj
 ```
 
 ## Getting Started
