@@ -9,25 +9,29 @@ import SwiftUI
 
 struct RegisterSetsSection: View {
     
-    @Binding var textToAdd: String
+    @Binding var userSet: String
+    @Binding var rivalSet: String
     let title: String
+    
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             Text(title)
-                .underline()
                 .font(.body)
                 .foregroundStyle(.primary)
             
             Spacer()
-            TextField("", text: $textToAdd)
+            TextField("", text: $userSet)
                 .font(.callout)
+                .foregroundStyle(.gray)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 50)
                 .keyboardType(.numberPad)
             Text("-")
-            TextField("", text: $textToAdd)
+            TextField("", text: $rivalSet)
                 .font(.callout)
+                .foregroundStyle(.gray)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 50)
                 .keyboardType(.numberPad)
@@ -37,7 +41,8 @@ struct RegisterSetsSection: View {
 
 #Preview {
     RegisterSetsSection(
-        textToAdd: .constant(""),
+        userSet: .constant(""),
+        rivalSet: .constant(""),
         title: "First Set:"
     )
 }

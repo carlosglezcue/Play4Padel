@@ -8,14 +8,20 @@
 import SwiftUI
 import SwiftData
 
-enum CourtType: String, Codable, CaseIterable {
-    case indoor
-    case outdoor
+enum CourtType: String, Codable, CaseIterable, Identifiable {
+    case indoor = "Indoor"
+    case outdoor = "Outdoor"
+    case none
+    
+    var id: Self { self }
 }
 
-enum PositionType: String, Codable, CaseIterable {
-    case backhand
-    case drive
+enum PositionType: String, Codable, CaseIterable, Identifiable {
+    case backhand = "Backhand"
+    case drive = "Drive"
+    case none
+    
+    var id: Self { self }
 }
 
 @Model

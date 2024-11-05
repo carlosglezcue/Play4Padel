@@ -11,50 +11,78 @@ struct RegisterMatchView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @Binding var textInfo: String
+    @Binding var userFirstSet: String
+    @Binding var userSecondSet: String
+    @Binding var userThirdSet: String
+    @Binding var rivalFirstSet: String
+    @Binding var rivalSecondSet: String
+    @Binding var rivalThirdSet: String
     @Binding var dateInfo: Date
+    @Binding var courtTypeSelected: CourtType
+    @Binding var positionSelected: PositionType
     
     let saveAction: () -> ()
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("• Add result:")
-                .font(.body)
+            Text("• Add result")
+                .font(.title2)
                 .bold()
             
             ZStack {
                 RoundedRectangle(cornerRadius: 10.0)
-                    .stroke(Color.black, lineWidth: 1)
-                    .background(Color.clear)
+                    .stroke(.darkBlack, lineWidth: 1)
+                    .background(.boxDark)
                     .frame(height: 300)
                 
                 VStack(alignment: .leading, spacing: 15) {
                     
                     RegisterSetsSection(
-                        textToAdd: $textInfo,
+                        userSet: $userFirstSet,
+                        rivalSet: $rivalFirstSet,
                         title: "First Set:"
                     )
                     
                     RegisterSetsSection(
-                        textToAdd: $textInfo,
+                        userSet: $userSecondSet,
+                        rivalSet: $rivalSecondSet,
                         title: "Second Set:"
                     )
                     
                     RegisterSetsSection(
-                        textToAdd: $textInfo,
+                        userSet: $userThirdSet,
+                        rivalSet: $rivalThirdSet,
                         title: "Third Set:"
                     )
                     
                     HStack(alignment: .firstTextBaseline) {
                         Text("Position played:")
                         Spacer()
-                        // TODO: Add Picker
+                        Menu {
+                            ForEach([CourtType.indoor, CourtType.outdoor], id: \.self) { type in
+                                Button(type.rawValue) {
+                                    courtTypeSelected = type
+                                }
+                            }
+                        } label: {
+                            Text("Select court type")
+                                .foregroundStyle(.gray)
+                        }
                     }
                     
                     HStack(alignment: .firstTextBaseline) {
                         Text("Court Type:")
                         Spacer()
-                        // TODO: Add Picker
+                        Menu {
+                            ForEach([PositionType.backhand, PositionType.drive], id: \.self) { position in
+                                Button(position.rawValue) {
+                                    positionSelected = position
+                                }
+                            }
+                        } label: {
+                            Text("Select position")
+                                .foregroundStyle(.gray)
+                        }
                     }
                     
                     HStack(alignment: .firstTextBaseline) {
@@ -96,8 +124,15 @@ struct RegisterMatchView: View {
 
 #Preview {
     RegisterMatchView(
-        textInfo: .constant(""),
+        userFirstSet: .constant(""),
+        userSecondSet: .constant(""),
+        userThirdSet: .constant(""),
+        rivalFirstSet: .constant(""),
+        rivalSecondSet: .constant(""),
+        rivalThirdSet: .constant(""),
         dateInfo: .constant(.now),
+        courtTypeSelected: .constant(.indoor),
+        positionSelected: .constant(.backhand),
         saveAction: { }
     )
 }

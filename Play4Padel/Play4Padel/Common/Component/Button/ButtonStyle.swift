@@ -30,8 +30,8 @@ struct PrincipalLargeButton: ButtonStyle {
 
 struct CancelButton: ButtonStyle {
     var fontType: Font { .body }
-    var foregroundColor: Color { .black }
-    var textColor: Color { .white }
+    var foregroundColor: Color { .darkBlack }
+    var textColor: Color { .principalText }
     var heightButton: CGFloat { 30 }
 }
 
