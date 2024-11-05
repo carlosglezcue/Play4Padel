@@ -16,6 +16,7 @@ struct SampleData: PreviewModifier {
         
         let firstMatch = MatchData(
             id: UUID(),
+            date: .now,
             firstUserSet: 4,
             secondUserSet: 6,
             thirdUserSet: 6,
@@ -32,6 +33,7 @@ struct SampleData: PreviewModifier {
         
         let secondMatch = MatchData(
             id: UUID(),
+            date: Calendar.current.date(byAdding: .month, value: -1, to: .now),
             firstUserSet: 3,
             secondUserSet: 2,
             totalUserGames: 5,

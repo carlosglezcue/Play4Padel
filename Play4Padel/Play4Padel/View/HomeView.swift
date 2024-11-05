@@ -6,13 +6,112 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
+    
+    @Query var dataMatch: [MatchData]
+    @Environment(\.modelContext) private var context
+    @State private var viewModel = HomeViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Hello, ")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.leading)
+                
+                Spacer()
+            }
+            .padding(.bottom)
+            .background(.principal)
+            
+            ScrollView {
+                LazyVStack {
+                    NormalButton(
+                        action: { viewModel.registerMatchAction() },
+                        title: "REGISTER MATCH",
+                        width: 300,
+                        style: PrincipalLargeButton()
+                    )
+                    .padding(.top, 30)
+                    
+                    TextDividerSectionView(title: "• Last match")
+                        .padding(.top)
+                    
+                    if let data = dataMatch.last {
+                        MatchInfoView(
+                            firstSubsection: "Result:",
+                            secondSubsection: "Games won:",
+                            thirdSubsection: "Date:",
+                            firstData: .constant(Utils.getResultMatch(data)),
+                            secondData: .constant("\(Utils.getUserDataTotalGames(data))"),
+                            thirdData: .constant((data.date ?? Date()).formatted(date: .numeric, time: .omitted))
+                        )
+                    } else {
+                        NoMatchesView(title: "There's not match yet")
+                    }
+                    
+                    TextDividerSectionView(title: "• Last 10 matches:")
+                        .padding(.top)
+                    
+                    if dataMatch.count >= 10 {
+                        MatchInfoView(
+                            firstSubsection: "Wins:",
+                            secondSubsection: "Loses:",
+                            thirdSubsection: "Porcentage wins:",
+                            firstData: .constant("\(Utils.getWinsForTenGames(dataMatch))"),
+                            secondData: .constant("\(Utils.getLosesForTenGames(dataMatch))"),
+                            thirdData: .constant("\(Utils.getWinPercentageForFirstTenGames(dataMatch).formattedWithoutDecimals)%")
+                        )
+                    } else {
+                        NoMatchesView(title: "You need to register more matches")
+                    }
+                    
+                    TextDividerSectionView(title: "• All matches:")
+                        .padding(.top)
+                    
+                    if dataMatch.count >= 1 {
+                        MatchInfoView(
+                            firstSubsection: "Wins:",
+                            secondSubsection: "Loses:",
+                            thirdSubsection: "Porcentage wins:",
+                            firstData: .constant("\(Utils.getTotalWins(dataMatch))"),
+                            secondData: .constant("\(Utils.getTotalLoses(dataMatch))"),
+                            thirdData: .constant("\(Utils.getWinPercentage(dataMatch).formattedWithoutDecimals)%")
+                        )
+                    } else {
+                        NoMatchesView(title: "You need to register a match")
+                    }
+                    
+                    if viewModel.isVisible {
+                        ReminderSubView(hideReminder: { viewModel.hideReminderAction() })
+                            .padding(.top)
+                    }
+                }
+                .padding(.horizontal, 30)
+                .padding(.bottom, 30)
+            }
+            .scrollBounceBehavior(.basedOnSize)
+            .fullScreenCover(isPresented: $viewModel.registerMatch) {
+                RegisterMatchView(
+                    userFirstSet: $viewModel.userFirstSet,
+                    userSecondSet: $viewModel.userSecondSet,
+                    userThirdSet: $viewModel.userThirdSet,
+                    rivalFirstSet: $viewModel.rivalFirstSet,
+                    rivalSecondSet: $viewModel.rivalSecondSet,
+                    rivalThirdSet: $viewModel.rivalThirdSet,
+                    dateInfo: $viewModel.dateInfo,
+                    courtTypeSelected: $viewModel.courtTypeSelected,
+                    positionSelected: $viewModel.positionSelected,
+                    saveAction: { viewModel.saveMatchDataAction(context) }
+                )
+            }
+        }
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     HomeView()
 }
