@@ -45,8 +45,8 @@ struct HomeView: View {
                             firstSubsection: "Result:",
                             secondSubsection: "Games won:",
                             thirdSubsection: "Date:",
-                            firstData: .constant(viewModel.getResultMatch(data)),
-                            secondData: .constant("\(viewModel.getUserDataTotalGames(data))"),
+                            firstData: .constant(Utils.getResultMatch(data)),
+                            secondData: .constant("\(Utils.getUserDataTotalGames(data))"),
                             thirdData: .constant((data.date ?? Date()).formatted(date: .numeric, time: .omitted))
                         )
                     } else {
@@ -61,9 +61,9 @@ struct HomeView: View {
                             firstSubsection: "Wins:",
                             secondSubsection: "Loses:",
                             thirdSubsection: "Porcentage wins:",
-                            firstData: .constant("\(viewModel.getTotalWinsForFirstTenGames(dataMatch))"),
-                            secondData: .constant("\(viewModel.getTotalLosesForFirstTenGames(dataMatch))"),
-                            thirdData: .constant("\(viewModel.getWinPercentageForFirstTenGames(dataMatch).formattedWithoutDecimals)%")
+                            firstData: .constant("\(Utils.getWinsForTenGames(dataMatch))"),
+                            secondData: .constant("\(Utils.getLosesForTenGames(dataMatch))"),
+                            thirdData: .constant("\(Utils.getWinPercentageForFirstTenGames(dataMatch).formattedWithoutDecimals)%")
                         )
                     } else {
                         NoMatchesView(title: "You need to register more matches")
@@ -77,9 +77,9 @@ struct HomeView: View {
                             firstSubsection: "Wins:",
                             secondSubsection: "Loses:",
                             thirdSubsection: "Porcentage wins:",
-                            firstData: .constant("\(viewModel.getTotalWins(dataMatch))"),
-                            secondData: .constant("\(viewModel.getTotalLoses(dataMatch))"),
-                            thirdData: .constant("\(viewModel.getWinPercentage(dataMatch).formattedWithoutDecimals)%")
+                            firstData: .constant("\(Utils.getTotalWins(dataMatch))"),
+                            secondData: .constant("\(Utils.getTotalLoses(dataMatch))"),
+                            thirdData: .constant("\(Utils.getWinPercentage(dataMatch).formattedWithoutDecimals)%")
                         )
                     } else {
                         NoMatchesView(title: "You need to register a match")
@@ -91,6 +91,7 @@ struct HomeView: View {
                     }
                 }
                 .padding(.horizontal, 30)
+                .padding(.bottom, 30)
             }
             .scrollBounceBehavior(.basedOnSize)
             .fullScreenCover(isPresented: $viewModel.registerMatch) {
