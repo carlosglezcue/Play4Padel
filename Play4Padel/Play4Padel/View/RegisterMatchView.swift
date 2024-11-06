@@ -99,7 +99,7 @@ struct RegisterMatchView: View {
             
             HStack {
                 NormalButton(
-                    action: { saveAction() },
+                    buttonAction: { saveAction() },
                     title: "Save",
                     width: 100,
                     style: PrincipalButton()
@@ -108,7 +108,7 @@ struct RegisterMatchView: View {
                 Spacer()
                 
                 NormalButton(
-                    action: { dismiss() },
+                    buttonAction: { dismiss() },
                     title: "Cancel",
                     width: 100,
                     style: CancelButton()

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct NormalButton: View {
     
-    let action: () -> ()
+    let buttonAction: () -> ()
     let title: String
     let width: CGFloat
     let style: ButtonStyle
     
     var body: some View {
         Button {
-            action()
+            buttonAction()
         } label: {
             Text(title)
                 .font(style.fontType)
@@ -31,7 +31,7 @@ struct NormalButton: View {
 
 #Preview {
     NormalButton(
-        action: { },
+        buttonAction: { },
         title: "Continue",
         width: 300,
         style: PrincipalButton()

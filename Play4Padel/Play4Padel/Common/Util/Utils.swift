@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct Utils {
+    
+    static func getAppVersion() -> String {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return version
+        }
+        return "Unknown"
+    }
+    
+    
+    // MARK: - Data match
+    
     static func getResultMatch(_ matchData: MatchData) -> String {
         let firstSet = "\(matchData.firstUserSet ?? .zero)-\(matchData.firstRivalSet ?? .zero)"
         let secondSet = "\(matchData.secondUserSet ?? .zero)-\(matchData.secondRivalSet ?? .zero)"

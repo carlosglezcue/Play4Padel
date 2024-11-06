@@ -8,6 +8,11 @@
 import Foundation
 
 extension String {
+    static let empty = ""
     
-    var empty: String { "" }
+    var firstLetterUppercased: String {
+        guard let firstLetter = self.first else { return .empty }
+        let followingLetters = self.dropFirst()
+        return String(firstLetter.uppercased()) + followingLetters.lowercased()
+    }
 }

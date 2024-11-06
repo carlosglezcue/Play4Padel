@@ -38,6 +38,6 @@ struct CancelButton: ButtonStyle {
 struct DeleteButton: ButtonStyle {
     var fontType: Font { .body }
     var foregroundColor: Color { .red }
-    var textColor: Color { .red}
+    var textColor: Color { .black}
     var heightButton: CGFloat { 30 }
 }

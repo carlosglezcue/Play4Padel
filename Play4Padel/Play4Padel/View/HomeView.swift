@@ -16,21 +16,14 @@ struct HomeView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Text("Hello, ")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.leading)
-                
-                Spacer()
-            }
-            .padding(.bottom)
-            .background(.principal)
+            HeaderView(
+                title: "Hello,"
+            )
             
             ScrollView {
                 LazyVStack {
                     NormalButton(
-                        action: { viewModel.registerMatchAction() },
+                        buttonAction: { viewModel.registerMatchAction() },
                         title: "REGISTER MATCH",
                         width: 300,
                         style: PrincipalLargeButton()
@@ -90,8 +83,7 @@ struct HomeView: View {
                             .padding(.top)
                     }
                 }
-                .padding(.horizontal, 30)
-                .padding(.bottom, 30)
+                .padding([.horizontal, .bottom], 30)
             }
             .scrollBounceBehavior(.basedOnSize)
             .fullScreenCover(isPresented: $viewModel.registerMatch) {
