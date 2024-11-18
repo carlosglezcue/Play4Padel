@@ -1,33 +1,37 @@
 //
-//  MatchInfoView.swift
+//  PersonalMatchInfoView.swift
 //  Play4Padel
 //
-//  Created by Carlos Gonzalez on 4/11/24.
+//  Created by Carlos Gonzalez on 9/11/24.
 //
 
 import SwiftUI
 
-struct MatchInfoView: View {
+struct PersonalMatchInfoView: View {
     
-    let firstSubsection: String
-    let secondSubsection: String
-    let thirdSubsection: String
+    let firstData: String
+    let secondData: String
+    let thirdData: String
+    let match: MatchData
     
-    @Binding var firstData: String
-    @Binding var secondData: String
-    @Binding var thirdData: String
+    @State var viewCourt: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
+            Text("Personal Data:")
+                .underline()
+                .font(.body)
+                .bold()
+            
             ZStack {
                 RoundedRectangle(cornerRadius: 10.0)
                     .stroke(Color.darkBlack, lineWidth: 1)
                     .background(Color.clear)
-                    .frame(height: 200)
+                    .frame(height: 250)
                 
                 VStack(alignment: .leading) {
                     MatchInfoComponent(
-                        text: firstSubsection,
+                        text: "Calories:",
                         data: .constant(firstData)
                     )
                     .padding(.vertical)
@@ -37,7 +41,7 @@ struct MatchInfoView: View {
                         .frame(height: 1)
                     
                     MatchInfoComponent(
-                        text: secondSubsection,
+                        text: "Heart Rate:",
                         data: .constant(secondData)
                     )
                     .padding(.vertical)
@@ -47,14 +51,32 @@ struct MatchInfoView: View {
                         .frame(height: 1)
                     
                     MatchInfoComponent(
-                        text: thirdSubsection,
+                        text: "Distance:",
                         data: .constant(thirdData)
                     )
                     .padding(.vertical)
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Button {
+                            viewCourt.toggle()
+                        } label: {
+                            Text("View on court")
+                                .font(.callout)
+                                .bold()
+                                .foregroundStyle(.black)
+                        }
+                        .tint(.principal)
+                        .buttonStyle(.borderedProminent)
+                    }
                 }
                 .padding(.horizontal)
             }
         }
         .padding(.vertical)
+        .fullScreenCover(isPresented: $viewCourt) {
+            CourtDataView(match: match)
+        }
     }
 }

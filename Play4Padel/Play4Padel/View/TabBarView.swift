@@ -26,11 +26,11 @@ struct TabBarView: View {
                     Label("My Profile", systemImage: "person.circle")
                 }
         }
-        .tint(.black)
+        .tint(.tabBarTint)
         .navigationBarBackButtonHidden(true)
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     TabBarView()
 }

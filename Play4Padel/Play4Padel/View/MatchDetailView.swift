@@ -8,11 +8,130 @@
 import SwiftUI
 
 struct MatchDetailView: View {
+    
+    @Environment(\.dismiss) private var dismiss
+    @State var viewModel: MatchDetailViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack(alignment: .lastTextBaseline) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 20)
+                        .foregroundStyle(.black)
+                        .shadow(color: .gray.opacity(0.5), radius: 5, y: 5)
+                }
+                
+                Spacer()
+                
+                Text("Matches Details")
+                    .font(.title2)
+                    .bold()
+                    .foregroundStyle(.onlyBlack)
+                    .padding(.top)
+                
+                Spacer()
+            }
+            .padding([.bottom, .horizontal])
+            .background(.principal)
+            
+            ScrollView {
+                HStack(spacing: 2) {
+                    Text("Date: ")
+                        .font(.body)
+                    
+                    Text(viewModel.match.date?.formatted(date: .long, time: .omitted) ?? .empty)
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                }
+                .padding()
+                
+                HStack {
+                    Text("My Team")
+                        .underline()
+                        .font(.title3)
+                        .bold()
+                    
+                    Spacer()
+                    
+                    Text("Rivals")
+                        .underline()
+                        .font(.title3)
+                        .bold()
+                        .padding(.trailing, 10)
+                }
+                .padding()
+                
+                DetailInfoMatchComponent(
+                    dataType: "First Set",
+                    teamData: viewModel.match.firstUserSet ?? .zero,
+                    rivalData: viewModel.match.firstRivalSet ?? .zero
+                )
+                
+                DetailInfoMatchComponent(
+                    dataType: "Second Set",
+                    teamData: viewModel.match.secondUserSet ?? .zero,
+                    rivalData: viewModel.match.secondRivalSet ?? .zero
+                )
+                
+                DetailInfoMatchComponent(
+                    dataType: "Third Set",
+                    teamData: viewModel.match.thirdUserSet ?? .zero,
+                    rivalData: viewModel.match.thirdRivalSet ?? .zero
+                )
+                
+                DetailInfoMatchComponent(
+                    dataType: "Total Games",
+                    teamData: Utils.getUserDataTotalGames(viewModel.match),
+                    rivalData: Utils.getRivalDataTotalGames(viewModel.match)
+                )
+                
+                DetailVictoryInfoComponent(
+                    dataType: "Result",
+                    isVictory: viewModel.match.isVictory ?? false
+                )
+                
+                PersonalMatchInfoView(
+                    firstData: "\((viewModel.match.calories ?? .zero).formattedWithoutDecimals) cal",
+                    secondData: "\((viewModel.match.heartRate ?? .zero).formattedWithoutDecimals) Hr/min",
+                    thirdData: "\((viewModel.match.distance ?? .zero).formattedWithoutDecimals) km",
+                    match: viewModel.match
+                )
+                .padding()
+                
+            }
+            .scrollIndicators(.hidden)
+            .scrollBounceBehavior(.basedOnSize)
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
+
 #Preview {
-    MatchDetailView()
+    MatchDetailView(
+        viewModel: MatchDetailViewModel(
+            match: MatchData(
+                id: UUID(),
+                date: .now,
+                firstUserSet: 4,
+                secondUserSet: 6,
+                thirdUserSet: 6,
+                totalUserGames: 16,
+                firstRivalSet: 6,
+                secondRivalSet: 3,
+                thirdRivalSet: 3,
+                totalRivalGames: 12,
+                isVictory: true,
+                position: .backhand,
+                courtType: .indoor,
+                calories: 1300,
+                totalMatchTime: 5400.0
+            )
+        )
+    )
 }

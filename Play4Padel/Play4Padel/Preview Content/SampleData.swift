@@ -28,7 +28,8 @@ struct SampleData: PreviewModifier {
             isVictory: true,
             position: .backhand,
             courtType: .indoor,
-            calories: 1300
+            calories: 1300,
+            totalMatchTime: 5400.0
         )
         
         let secondMatch = MatchData(
@@ -43,7 +44,8 @@ struct SampleData: PreviewModifier {
             isVictory: false,
             position: .drive,
             courtType: .outdoor,
-            calories: 900
+            calories: 900,
+            totalMatchTime: 4500.0
         )
         container.mainContext.insert(firstMatch)
         container.mainContext.insert(secondMatch)

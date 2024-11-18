@@ -31,6 +31,10 @@ struct Utils {
         return (matchData.firstUserSet ?? .zero) + (matchData.secondUserSet ?? .zero) + (matchData.thirdUserSet ?? .zero)
     }
     
+    static func getRivalDataTotalGames(_ matchData: MatchData) -> Int {
+        return (matchData.firstRivalSet ?? .zero) + (matchData.secondRivalSet ?? .zero) + (matchData.thirdRivalSet ?? .zero)
+    }
+    
     static func getWinPercentageForFirstTenGames(_ matchData: [MatchData]) -> Double {
         let firstTenGames = Array(matchData.prefix(10))
         let totalWins = getTotalWins(firstTenGames)
@@ -66,5 +70,20 @@ struct Utils {
     
     static func getTotalLoses(_ matchData: [MatchData]) -> Int {
         return matchData.reduce(0) { $0 + (($1.isVictory ?? false) ? 0 : 1) }
+    }
+    
+    static func getTotalCalories(_ matchData: MatchData) -> String {
+        guard let calories = matchData.calories else { return .empty }
+        
+        let carloriesBurned = calories.formattedWithoutDecimals
+        return carloriesBurned
+    }
+    
+    static func getTotalMatchDuration(_ matchData: MatchData) -> String {
+        guard let totalTime = matchData.totalMatchTime else { return .empty }
+        let matchTime = totalTime / 60
+        
+        let totalDuration = matchTime.formattedWithoutDecimals
+        return totalDuration
     }
 }

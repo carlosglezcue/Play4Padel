@@ -16,6 +16,7 @@ struct HeaderView: View {
             Text(title)
                 .font(.largeTitle)
                 .bold()
+                .foregroundStyle(.onlyBlack)
                 .padding(.leading)
             
             Spacer()

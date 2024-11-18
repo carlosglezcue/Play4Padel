@@ -41,6 +41,8 @@ final class MatchData {
     var courtType: CourtType?
     var calories: Double?
     var totalMatchTime: TimeInterval?
+    var heartRate: Double?
+    var distance: Double?
     
     init(
         id: UUID,
@@ -57,7 +59,9 @@ final class MatchData {
         position: PositionType? = nil,
         courtType: CourtType? = nil,
         calories: Double? = nil,
-        totalMatchTime: TimeInterval? = nil
+        totalMatchTime: TimeInterval? = nil,
+        heartRate: Double? = nil,
+        distance: Double? = nil
     ) {
         self.id = id
         self.date = date
@@ -74,5 +78,7 @@ final class MatchData {
         self.courtType = courtType
         self.calories = calories
         self.totalMatchTime = totalMatchTime
+        self.heartRate = heartRate
+        self.distance = distance
     }
 }

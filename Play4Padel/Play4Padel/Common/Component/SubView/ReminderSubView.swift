@@ -15,7 +15,7 @@ struct ReminderSubView: View {
         VStack {
             ZStack(alignment: .top) {
                 RoundedRectangle(cornerRadius: 10.0)
-                    .stroke(Color.black, lineWidth: 1)
+                    .stroke(Color.darkBlack, lineWidth: 1)
                     .background(Color.clear)
                     .frame(height: 200)
                 
@@ -30,6 +30,7 @@ struct ReminderSubView: View {
                             Text("FRIENDLY REMINDER!")
                                 .font(.title2)
                                 .bold()
+                                .foregroundStyle(.onlyBlack)
                             Spacer()
                             Button {
                                 hideReminder()
@@ -37,6 +38,7 @@ struct ReminderSubView: View {
                                 Image(systemName: "xmark.circle")
                                     .resizable()
                                     .scaledToFit()
+                                    .foregroundStyle(.onlyBlack)
                                     .frame(height: 30)
                             }
                             .buttonStyle(.plain)
