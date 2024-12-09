@@ -23,7 +23,7 @@ struct Play4PadelApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            MainView()
         }
         .modelContainer(sharedModelContainer)
     }

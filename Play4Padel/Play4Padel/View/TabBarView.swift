@@ -8,26 +8,27 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house.circle.fill")
-                        .foregroundStyle(.black)
-                }
-            
-            MatchListView()
-                .tabItem {
-                    Label("Matches", systemImage: "tennisball.fill")
-                }
-            
-            ProfileView()
-                .tabItem {
-                    Label("My Profile", systemImage: "person.circle")
-                }
-        }
-        .tint(.tabBarTint)
-        .navigationBarBackButtonHidden(true)
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Label("Home", systemImage: "house.circle.fill")
+                            .foregroundStyle(.black)
+                    }
+                
+                MatchListView()
+                    .tabItem {
+                        Label("Matches", systemImage: "tennisball.fill")
+                    }
+                
+                ProfileView()
+                    .tabItem {
+                        Label("My Profile", systemImage: "person.circle")
+                    }
+            }
+            .tint(.tabBarTint)
+            .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @State private var viewModel = ProfileViewModel()
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         VStack {
@@ -47,7 +48,7 @@ struct ProfileView: View {
                     Text("Player Position:")
                         .font(.body)
                     Spacer()
-                    Text(viewModel.gerPlayerPosition())
+                    Text(viewModel.playerPosition)
                         .font(.headline)
                 }
                 .padding(.top)
@@ -67,7 +68,7 @@ struct ProfileView: View {
                 .padding(.top, 10)
                 
                 NormalButton(
-                    buttonAction: { viewModel.removeUserDataAction() },
+                    buttonAction: { viewModel.showAlert.toggle() },
                     title: "Remove all data",
                     width: 300,
                     style: DeleteButton()
@@ -88,6 +89,19 @@ struct ProfileView: View {
         .sheet(isPresented: $viewModel.readTermsConditions) {
             ConditionsAndTermsView()
         }
+        .alert(
+            "Are you sure you want to delete all your data?",
+            isPresented: $viewModel.showAlert,
+            actions: {
+                Button("Cancel", role: .cancel) {}
+                Button("Continue", role: .none) {
+                    viewModel.removeUserDataAction(context)
+                }
+            },
+            message: {
+                Text("You will not be able to watch any added matches on any of the devices where you have the app installed.")
+            }
+        )
     }
 }
 

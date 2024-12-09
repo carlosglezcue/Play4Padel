@@ -6,14 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @Observable
 final class ProfileViewModel {
     
     // MARK: - Properties
     
+    private let userDefaultsManager = UserDefaultsManager()
+    
     var reedPrivacyPolicy: Bool = false
     var readTermsConditions: Bool = false
+    var showAlert: Bool = false
+    var playerPosition: String = ""
+    
+    @MainActor
+    init() {
+        Task(priority: .background) {
+            self.playerPosition = await getPlayerPosition()
+        }
+    }
     
     // MARK: - Functions
     
@@ -27,14 +39,20 @@ final class ProfileViewModel {
         return nil
     }
     
-    func gerPlayerPosition() -> String {
-        // TODO: Add logic to get the position saved
-        return "Backhand"
+    func getPlayerPosition() async -> String {
+        let value: String = await userDefaultsManager.get(forKey: "playerPosition") ?? ""
+        return value
     }
     
     // MARK: - Actions
     
-    func removeUserDataAction() {
-        
+    func removeUserDataAction(_ context: ModelContext) {
+        do {
+            let matches = try context.fetch(FetchDescriptor<MatchData>())
+            matches.forEach { context.delete($0) }
+            try context.save()
+        } catch {
+            NSLog("Error to remove all data")
+        }
     }
 }
