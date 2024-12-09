@@ -13,8 +13,8 @@ struct FinishSetupSubView: View {
     
     var body: some View {
         Text("Let's go!")
-            .font(.largeTitle)
-            .bold()
+            .underline()
+            .font(.system(size: 40, weight: .bold))
             .padding(.bottom, 50)
         
         Text("Now it's time to enjoy your games and have everything under control. Go for the victory!")

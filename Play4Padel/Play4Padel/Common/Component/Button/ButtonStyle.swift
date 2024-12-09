@@ -21,6 +21,13 @@ struct PrincipalButton: ButtonStyle {
     var heightButton: CGFloat { 30 }
 }
 
+struct PrincipalWhiteButton: ButtonStyle {
+    var fontType: Font { .body }
+    var foregroundColor: Color { .principal }
+    var textColor: Color { .white }
+    var heightButton: CGFloat { 30 }
+}
+
 struct PrincipalLargeButton: ButtonStyle {
     var fontType: Font { .title2 }
     var foregroundColor: Color { .principal }

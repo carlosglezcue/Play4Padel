@@ -13,24 +13,23 @@ struct WelcomeSubView: View {
     
     var body: some View {
         Text("WELCOME!")
-            .font(.largeTitle)
-            .bold()
+            .underline()
+            .font(.system(size: 40, weight: .bold))
             .padding(.bottom, 50)
         
         Text("Thanks for using our App. \nLet's start with some configurations")
             .font(.body)
             .padding(.bottom, 50)
         
-        Button {
-            action()
-        } label: {
-            Text("Continue")
-                .font(.body)
-                .foregroundStyle(.white)
-                .bold()
-                .frame(maxWidth: .infinity)
-        }
-        .tint(.black)
-        .buttonStyle(.borderedProminent)
+        NormalButton(
+            buttonAction: { action() },
+            title: "Continue",
+            width: 300,
+            style: CancelButton()
+        )
     }
+}
+
+#Preview {
+    WelcomeSubView(action: { })
 }

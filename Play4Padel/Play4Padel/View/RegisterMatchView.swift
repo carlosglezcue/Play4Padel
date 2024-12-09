@@ -25,14 +25,16 @@ struct RegisterMatchView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("• Add result")
-                .font(.title2)
-                .bold()
+            HeaderView(
+                title: "Add result:"
+            )
+            
+            Spacer()
             
             ZStack {
                 RoundedRectangle(cornerRadius: 10.0)
                     .stroke(.darkBlack, lineWidth: 1)
-                    .background(.boxDark)
+                    .fill(.boxDark)
                     .frame(height: 300)
                 
                 VStack(alignment: .leading, spacing: 15) {
@@ -96,6 +98,9 @@ struct RegisterMatchView: View {
                 }
                 .padding(.horizontal)
             }
+            .padding()
+            
+            Spacer()
             
             HStack {
                 NormalButton(
@@ -114,11 +119,11 @@ struct RegisterMatchView: View {
                     style: CancelButton()
                 )
             }
-            .padding(.top)
-            .padding(.horizontal, 20)
+            .padding(.bottom, 40)
+            .padding(.horizontal, 40)
         }
-        .padding()
-        .presentationDetents([.medium])
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.boxDark)
     }
 }
 

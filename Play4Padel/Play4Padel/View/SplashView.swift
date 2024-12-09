@@ -19,7 +19,7 @@ struct SplashView: View {
                 .foregroundStyle(.white)
                 .frame(width: 3000, height: 25)
                 .ignoresSafeArea()
-                .padding(.bottom, 400)
+                .padding(.bottom, 500)
             
             Rectangle()
                 .foregroundStyle(.white)
@@ -29,10 +29,10 @@ struct SplashView: View {
             
             Text("Play4Padel")
                 .underline()
-                .font(.largeTitle)
-                .bold()
+                .font(.system(size: 40, weight: .bold))
                 .foregroundStyle(.onlyBlack)
-                .padding(.leading, 100)
+                .padding(.leading, 120)
+                .padding(.top, 200)
         }
     }
 }

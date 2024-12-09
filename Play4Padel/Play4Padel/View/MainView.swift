@@ -27,7 +27,7 @@ struct MainView: View {
         .animation(.easeInOut, value: isInitializing)
         .onAppear {
             Task {
-                try await Task.sleep(nanoseconds: 3000000000)
+                try await Task.sleep(nanoseconds: 2000000000)
                 isInitializing = false
             }
         }
