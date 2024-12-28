@@ -56,20 +56,20 @@ struct PersonalMatchInfoView: View {
                     )
                     .padding(.vertical)
                     
-                    HStack {
-                        Spacer()
-                        
-                        Button {
-                            viewCourt.toggle()
-                        } label: {
-                            Text("View on court")
-                                .font(.callout)
-                                .bold()
-                                .foregroundStyle(.black)
-                        }
-                        .tint(.principal)
-                        .buttonStyle(.borderedProminent)
-                    }
+//                    HStack {
+//                        Spacer()
+//                        
+//                        Button {
+//                            viewCourt.toggle()
+//                        } label: {
+//                            Text("View on court")
+//                                .font(.callout)
+//                                .bold()
+//                                .foregroundStyle(.black)
+//                        }
+//                        .tint(.principal)
+//                        .buttonStyle(.borderedProminent)
+//                    }
                 }
                 .padding(.horizontal)
             }

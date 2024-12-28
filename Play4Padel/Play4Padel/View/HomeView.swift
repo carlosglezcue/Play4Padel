@@ -15,9 +15,10 @@ struct HomeView: View {
     @State private var viewModel = HomeViewModel()
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: .zero) {
             HeaderView(
-                title: "Hello,"
+                section: "Hello",
+                subsection: "Carlos"
             )
             
             ScrollView {

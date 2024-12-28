@@ -26,7 +26,8 @@ struct RegisterMatchView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HeaderView(
-                title: "Add result:"
+                section: "Add result:",
+                subsection: ""
             )
             
             Spacer()

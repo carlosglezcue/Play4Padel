@@ -31,7 +31,7 @@ final class ProfileViewModel {
     
     func getNickname() -> String {
         // TODO: Add logic to get the username saved
-        return "Charlieglez"
+        return "Carlos"
     }
     
     func getImage() -> ImageResource? {

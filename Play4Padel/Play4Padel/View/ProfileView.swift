@@ -15,7 +15,8 @@ struct ProfileView: View {
     var body: some View {
         VStack {
             HeaderView(
-                title: "My Profile"
+                section: "My Profile",
+                subsection: ""
             )
             
             VStack {

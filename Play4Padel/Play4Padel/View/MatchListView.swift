@@ -16,7 +16,10 @@ struct MatchListView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                HeaderView(title: "Matches")
+                HeaderView(
+                    section: "Matches",
+                    subsection: ""
+                )
                 
                 HStack(alignment: .lastTextBaseline) {
                     Text("Ordered by:")

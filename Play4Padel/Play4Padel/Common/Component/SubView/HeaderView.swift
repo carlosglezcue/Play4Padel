@@ -9,25 +9,30 @@ import SwiftUI
 
 struct HeaderView: View {
     
-    let title: String
+    let section: String
+    let subsection: String
     
     var body: some View {
         HStack {
-            Text(title)
-                .font(.largeTitle)
-                .bold()
-                .foregroundStyle(.onlyBlack)
-                .padding(.leading)
+            Group {
+                Text(section)
+                + Text(subsection.isEmpty ? "" : " \(subsection),")
+            }
+            .font(.largeTitle)
+            .bold()
+            .foregroundStyle(.onlyBlack)
+            .padding([.top, .leading])
             
             Spacer()
         }
-        .padding(.bottom)
+        .frame(height: 75)
         .background(.principal)
     }
 }
 
 #Preview {
     HeaderView(
-        title: "Hello"
+        section: "Hello",
+        subsection: "Carlos"
     )
 }
