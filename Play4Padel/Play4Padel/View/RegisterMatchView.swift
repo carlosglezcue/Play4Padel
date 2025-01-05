@@ -101,8 +101,6 @@ struct RegisterMatchView: View {
             }
             .padding()
             
-            Spacer()
-            
             HStack {
                 NormalButton(
                     buttonAction: { saveAction() },
@@ -122,6 +120,8 @@ struct RegisterMatchView: View {
             }
             .padding(.bottom, 40)
             .padding(.horizontal, 40)
+            
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.boxDark)

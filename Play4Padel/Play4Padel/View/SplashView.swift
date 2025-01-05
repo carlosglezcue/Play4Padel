@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SplashView: View {
     
+    @State private var isAnimating = false
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -33,6 +35,13 @@ struct SplashView: View {
                 .foregroundStyle(.onlyBlack)
                 .padding(.leading, 120)
                 .padding(.top, 200)
+                .scaleEffect(isAnimating ? 1 : 0.5)
+                .opacity(isAnimating ? 1 : 0)
+                .onAppear {
+                    withAnimation(.spring(response: 0.8, dampingFraction: 0.6)) {
+                        isAnimating = true
+                    }
+                }
         }
     }
 }

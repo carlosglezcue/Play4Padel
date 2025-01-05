@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TabBarView: View {
     
+    @Binding var viewModel: UserViewModel
+    
     var body: some View {
             TabView {
                 HomeView()
@@ -22,7 +24,7 @@ struct TabBarView: View {
                         Label("Matches", systemImage: "tennisball.fill")
                     }
                 
-                ProfileView()
+                ProfileView(viewModel: $viewModel)
                     .tabItem {
                         Label("My Profile", systemImage: "person.circle")
                     }
@@ -33,5 +35,5 @@ struct TabBarView: View {
 }
 
 #Preview(traits: .sampleData) {
-    TabBarView()
+    TabBarView(viewModel: .constant(UserViewModel()))
 }

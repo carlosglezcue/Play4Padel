@@ -13,25 +13,28 @@ final class ProfileViewModel {
     
     // MARK: - Properties
     
-    private let userDefaultsManager = UserDefaultsManager()
+    private let keychainManager = KeychainManager()
     
     var reedPrivacyPolicy: Bool = false
     var readTermsConditions: Bool = false
     var showAlert: Bool = false
     var playerPosition: String = ""
+    var username: String = ""
     
     @MainActor
     init() {
-        Task(priority: .background) {
-            self.playerPosition = await getPlayerPosition()
+        Task {
+            username = try await getNickname()
+            playerPosition = try await getPlayerPosition()
         }
     }
     
     // MARK: - Functions
     
-    func getNickname() -> String {
-        // TODO: Add logic to get the username saved
-        return "Carlos"
+    func getNickname() async throws -> String {
+        let user: UserSession? = try await keychainManager.get(forKey: KeychainConstant.session)
+        let username = user?.fullName?.nickname ?? .empty
+        return username
     }
     
     func getImage() -> ImageResource? {
@@ -39,12 +42,19 @@ final class ProfileViewModel {
         return nil
     }
     
-    func getPlayerPosition() async -> String {
-        let value: String = await userDefaultsManager.get(forKey: "playerPosition") ?? ""
+    func getPlayerPosition() async throws -> String {
+        let value: String = try await keychainManager.get(forKey: KeychainConstant.playerPosition) ?? ""
         return value
     }
     
     // MARK: - Actions
+    
+    @MainActor
+    func closeSession() {
+        Task {
+            try await keychainManager.remove(forKey: KeychainConstant.session)
+        }
+    }
     
     func removeUserDataAction(_ context: ModelContext) {
         do {

@@ -15,7 +15,7 @@ enum SetupUserState {
 
 struct SetupUserView: View {
     
-    @Binding var viewModel: SetupUserViewModel
+    @Binding var viewModel: UserViewModel
     
     var body: some View {
         ZStack {
@@ -56,5 +56,5 @@ struct SetupUserView: View {
 }
 
 #Preview {
-    SetupUserView(viewModel: .constant(SetupUserViewModel()))
+    SetupUserView(viewModel: .constant(UserViewModel()))
 }

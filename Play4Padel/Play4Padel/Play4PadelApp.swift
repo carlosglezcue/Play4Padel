@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct Play4PadelApp: App {
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([MatchData.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)

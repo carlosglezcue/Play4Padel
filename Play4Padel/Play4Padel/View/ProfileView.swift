@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @State private var viewModel = ProfileViewModel()
+    @Binding var viewModel: UserViewModel
     @Environment(\.modelContext) private var context
     
     var body: some View {
@@ -40,7 +40,7 @@ struct ProfileView: View {
                     Text("Nickname:")
                         .font(.body)
                     Spacer()
-                    Text(viewModel.getNickname())
+                    Text(viewModel.username)
                         .font(.headline)
                 }
                 .padding(.top)
@@ -69,12 +69,20 @@ struct ProfileView: View {
                 .padding(.top, 10)
                 
                 NormalButton(
+                    buttonAction: { viewModel.closeSession() },
+                    title: "Close session",
+                    width: 300,
+                    style: CancelButton()
+                )
+                .padding(.top, 30)
+                
+                NormalButton(
                     buttonAction: { viewModel.showAlert.toggle() },
                     title: "Remove all data",
                     width: 300,
                     style: DeleteButton()
                 )
-                .padding(.top, 30)
+                .padding(.top, 10)
                 
                 Text("Version: \(Utils.getAppVersion())")
                     .font(.caption2)
@@ -94,8 +102,8 @@ struct ProfileView: View {
             "Are you sure you want to delete all your data?",
             isPresented: $viewModel.showAlert,
             actions: {
-                Button("Cancel", role: .cancel) {}
-                Button("Continue", role: .none) {
+                Button("Cancel", role: .cancel) { }
+                Button("Yes", role: .none) {
                     viewModel.removeUserDataAction(context)
                 }
             },
@@ -107,5 +115,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(viewModel: .constant(UserViewModel()))
 }
