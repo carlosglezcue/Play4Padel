@@ -14,6 +14,8 @@ struct HomeView: View {
     @Environment(\.modelContext) private var context
     @State private var viewModel = HomeViewModel()
     
+    @DeviceIdiom private var deviceIdiom
+    
     var body: some View {
         VStack(alignment: .leading, spacing: .zero) {
             HeaderView(
@@ -84,7 +86,7 @@ struct HomeView: View {
                             .padding(.top)
                     }
                 }
-                .padding([.horizontal, .bottom], 30)
+                .padding([.horizontal, .bottom], deviceIdiom == .pad ? 200 : 30)
             }
             .scrollBounceBehavior(.basedOnSize)
             .fullScreenCover(isPresented: $viewModel.registerMatch) {

@@ -12,6 +12,8 @@ struct ProfileView: View {
     @Binding var viewModel: UserViewModel
     @Environment(\.modelContext) private var context
     
+    @DeviceIdiom private var deviceIdiom
+    
     var body: some View {
         VStack {
             HeaderView(
@@ -36,58 +38,44 @@ struct ProfileView: View {
                         .padding(.top)
                 }
                 
-                HStack {
-                    Text("Nickname:")
-                        .font(.body)
-                    Spacer()
-                    Text(viewModel.username)
-                        .font(.headline)
+                Group {
+                    HStack {
+                        Text("Nickname:")
+                            .font(.body)
+                        Spacer()
+                        Text(viewModel.username)
+                            .font(.headline)
+                    }
+                    .padding(.top)
+                    
+                    HStack {
+                        Text("Player Position:")
+                            .font(.body)
+                        Spacer()
+                        Text(viewModel.playerPosition)
+                            .font(.headline)
+                    }
+                    .padding(.top)
                 }
-                .padding(.top)
-                
-                HStack {
-                    Text("Player Position:")
-                        .font(.body)
-                    Spacer()
-                    Text(viewModel.playerPosition)
-                        .font(.headline)
-                }
-                .padding(.top)
+                .padding(.horizontal, deviceIdiom == .pad ? 200 : 0)
                 
                 Spacer()
                 
-                LargeIconButton(
-                    title: "Policy Privacy",
-                    buttonAction: { viewModel.reedPrivacyPolicy.toggle() }
-                )
-                .padding(.top, 30)
-                
-                LargeIconButton(
-                    title: "Conditions & Terms",
-                    buttonAction: { viewModel.readTermsConditions.toggle() }
-                )
-                .padding(.top, 10)
-                
-                NormalButton(
-                    buttonAction: { viewModel.closeSession() },
-                    title: "Close session",
-                    width: 300,
-                    style: CancelButton()
-                )
-                .padding(.top, 30)
-                
-                NormalButton(
-                    buttonAction: { viewModel.showAlert.toggle() },
-                    title: "Remove all data",
-                    width: 300,
-                    style: DeleteButton()
-                )
-                .padding(.top, 10)
-                
-                Text("Version: \(Utils.getAppVersion())")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .padding(.top, 5)
+                if deviceIdiom == .pad {
+                    PadProfileButtonsSubView(
+                        loadPrivacyAction: { viewModel.reedPrivacyPolicy.toggle() },
+                        loadConditionsAction: { viewModel.readTermsConditions.toggle() },
+                        closeSessionAction: { viewModel.closeSession() },
+                        removeAllDataAction: { viewModel.removeUserDataAction(context) }
+                    )
+                } else {
+                    ProfileButtonsSubView(
+                        loadPrivacyAction: { viewModel.reedPrivacyPolicy.toggle() },
+                        loadConditionsAction: { viewModel.readTermsConditions.toggle() },
+                        closeSessionAction: { viewModel.closeSession() },
+                        removeAllDataAction: { viewModel.removeUserDataAction(context) }
+                    )
+                }
             }
             .padding(.bottom, 30)
             .padding(.horizontal, 35)
