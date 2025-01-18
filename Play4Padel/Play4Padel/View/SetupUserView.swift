@@ -15,6 +15,8 @@ enum SetupUserState {
 
 struct SetupUserView: View {
     
+    @DeviceIdiom private var deviceIdiom
+    
     @Binding var viewModel: UserViewModel
     
     var body: some View {
@@ -39,6 +41,7 @@ struct SetupUserView: View {
                                 thirdAction: { withAnimation { viewModel.selectPositionAction(.both) } }
                             )
                             .transition(.opacity)
+                            .padding(.horizontal, deviceIdiom == .pad ? 200 : 0)
                         case .finish:
                             FinishSetupSubView(
                                 action: { withAnimation { viewModel.changeScreenTypeAction() }  }

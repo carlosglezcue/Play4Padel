@@ -11,6 +11,8 @@ struct RegisterMatchView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @DeviceIdiom private var deviceIdiom
+    
     @Binding var userFirstSet: String
     @Binding var userSecondSet: String
     @Binding var userThirdSet: String
@@ -100,6 +102,7 @@ struct RegisterMatchView: View {
                 .padding(.horizontal)
             }
             .padding()
+            .padding(.horizontal, deviceIdiom == .pad ? 200 : 0)
             
             HStack {
                 NormalButton(
@@ -119,7 +122,7 @@ struct RegisterMatchView: View {
                 )
             }
             .padding(.bottom, 40)
-            .padding(.horizontal, 40)
+            .padding(.horizontal, deviceIdiom == .pad ? 350 : 40)
             
             Spacer()
         }

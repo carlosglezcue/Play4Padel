@@ -12,6 +12,8 @@ struct MatchDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State var viewModel: MatchDetailViewModel
     
+    @DeviceIdiom private var deviceIdiom
+    
     var body: some View {
         VStack {
             HStack(alignment: .lastTextBaseline) {
@@ -50,50 +52,53 @@ struct MatchDetailView: View {
                 }
                 .padding()
                 
-                HStack {
-                    Text("My Team")
-                        .underline()
-                        .font(.title3)
-                        .bold()
+                Group {
+                    HStack {
+                        Text("My Team")
+                            .underline()
+                            .font(.title3)
+                            .bold()
+                        
+                        Spacer()
+                        
+                        Text("Rivals")
+                            .underline()
+                            .font(.title3)
+                            .bold()
+                            .padding(.trailing, 10)
+                    }
+                    .padding()
                     
-                    Spacer()
+                    DetailInfoMatchComponent(
+                        dataType: "First Set",
+                        teamData: viewModel.match.firstUserSet ?? .zero,
+                        rivalData: viewModel.match.firstRivalSet ?? .zero
+                    )
                     
-                    Text("Rivals")
-                        .underline()
-                        .font(.title3)
-                        .bold()
-                        .padding(.trailing, 10)
+                    DetailInfoMatchComponent(
+                        dataType: "Second Set",
+                        teamData: viewModel.match.secondUserSet ?? .zero,
+                        rivalData: viewModel.match.secondRivalSet ?? .zero
+                    )
+                    
+                    DetailInfoMatchComponent(
+                        dataType: "Third Set",
+                        teamData: viewModel.match.thirdUserSet ?? .zero,
+                        rivalData: viewModel.match.thirdRivalSet ?? .zero
+                    )
+                    
+                    DetailInfoMatchComponent(
+                        dataType: "Total Games",
+                        teamData: Utils.getUserDataTotalGames(viewModel.match),
+                        rivalData: Utils.getRivalDataTotalGames(viewModel.match)
+                    )
+                    
+                    DetailVictoryInfoComponent(
+                        dataType: "Result",
+                        isVictory: viewModel.match.isVictory ?? false
+                    )
                 }
-                .padding()
-                
-                DetailInfoMatchComponent(
-                    dataType: "First Set",
-                    teamData: viewModel.match.firstUserSet ?? .zero,
-                    rivalData: viewModel.match.firstRivalSet ?? .zero
-                )
-                
-                DetailInfoMatchComponent(
-                    dataType: "Second Set",
-                    teamData: viewModel.match.secondUserSet ?? .zero,
-                    rivalData: viewModel.match.secondRivalSet ?? .zero
-                )
-                
-                DetailInfoMatchComponent(
-                    dataType: "Third Set",
-                    teamData: viewModel.match.thirdUserSet ?? .zero,
-                    rivalData: viewModel.match.thirdRivalSet ?? .zero
-                )
-                
-                DetailInfoMatchComponent(
-                    dataType: "Total Games",
-                    teamData: Utils.getUserDataTotalGames(viewModel.match),
-                    rivalData: Utils.getRivalDataTotalGames(viewModel.match)
-                )
-                
-                DetailVictoryInfoComponent(
-                    dataType: "Result",
-                    isVictory: viewModel.match.isVictory ?? false
-                )
+                .padding(.horizontal, deviceIdiom == .pad ? 200 : 0)
                 
                 PersonalMatchInfoView(
                     firstData: "\((viewModel.match.calories ?? .zero).formattedWithoutDecimals) cal",
@@ -102,6 +107,7 @@ struct MatchDetailView: View {
                     match: viewModel.match
                 )
                 .padding()
+                .padding(.horizontal, deviceIdiom == .pad ? 200 : 0)
                 
             }
             .scrollIndicators(.hidden)

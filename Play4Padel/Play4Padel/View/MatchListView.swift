@@ -13,6 +13,8 @@ struct MatchListView: View {
     @Query var dataMatch: [MatchData]
     @State private var viewModel = MatchViewModel()
     
+    @DeviceIdiom private var deviceIdiom
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
@@ -34,6 +36,7 @@ struct MatchListView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
                 }
+                .padding(.horizontal, deviceIdiom == .pad ? 200 : 0)
                 
                 ScrollView {
                     VStack(alignment: .leading) {
@@ -54,6 +57,7 @@ struct MatchListView: View {
                             }
                         }
                     }
+                    .padding(.horizontal, deviceIdiom == .pad ? 200 : 0)
                 }
                 .scrollBounceBehavior(.basedOnSize)
             }
