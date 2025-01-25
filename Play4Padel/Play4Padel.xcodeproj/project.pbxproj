@@ -79,6 +79,16 @@
 			);
 			target = 2F32D6D32CD6399A00832951 /* Play4Padel */;
 		};
+		2F394CEB2D456E3800E91E16 /* Exceptions for "Play4Padel" folder in "Play4PadelWatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Common/Extension/Number+.swift",
+				"Common/Extension/String+.swift",
+				Model/MatchData.swift,
+				"Preview Content/SampleData.swift",
+			);
+			target = 2F8B50462D452B3C00CEE897 /* Play4PadelWatch Watch App */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -86,6 +96,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				2F32D6FA2CD6399E00832951 /* Exceptions for "Play4Padel" folder in "Play4Padel" target */,
+				2F394CEB2D456E3800E91E16 /* Exceptions for "Play4Padel" folder in "Play4PadelWatch Watch App" target */,
 			);
 			path = Play4Padel;
 			sourceTree = "<group>";
@@ -767,6 +778,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Play4PadelWatch Watch App/Play4PadelWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Play4PadelWatch Watch App/Preview Content\"";
@@ -797,6 +809,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Play4PadelWatch Watch App/Play4PadelWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Play4PadelWatch Watch App/Preview Content\"";

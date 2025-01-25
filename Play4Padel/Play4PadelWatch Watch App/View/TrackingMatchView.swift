@@ -32,6 +32,7 @@ struct TrackingMatchView: View {
                 .tag(2)
         }
         .tabViewStyle(PageTabViewStyle())
+        .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -10,39 +10,36 @@ import SwiftUI
 struct HomeView: View {
     
     var body: some View {
-        VStack(spacing: 20) {
-            Button {
-                
-            } label: {
-                HStack(alignment: .firstTextBaseline) {
-                    Image(systemName: "play.circle")
-                    Text("Play match")
-                        .font(.body)
-                    
-                    Spacer()
+        NavigationStack {
+            VStack(spacing: 20) {
+                NavigationLink(destination: TrackingMatchView()) {
+                    HStack(alignment: .firstTextBaseline) {
+                        Image(systemName: "play.circle")
+                        Text("Play match")
+                            .font(.body)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
-            }
-            .tint(.green)
-            
-            Button {
+                .tint(.green)
                 
-            } label: {
-                HStack {
-                    Image(systemName: "line.3.horizontal.decrease.circle")
-                    Text("History")
-                        .font(.body)
-                    Spacer()
+                NavigationLink(destination: HistoryView()) {
+                    HStack {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                        Text("History")
+                            .font(.body)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+                .tint(.blue)
             }
-            .tint(.blue)
-            
+            .padding()
         }
-        .padding()
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     HomeView()
 }
