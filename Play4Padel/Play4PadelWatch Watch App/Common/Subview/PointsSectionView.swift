@@ -7,39 +7,36 @@
 
 import SwiftUI
 
-struct PointsSectionView: View {
-    
-    let viewModel: RegisterMatchViewModel
-    let color: Color
-    let title: String
-    let isPlayer: Bool
+struct PlayerPointsSection: View {
+    let playerNumber: String
+    let backgroundColor: Color
+    let points: String
+    let onPointScored: () -> Void
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10.0)
-                .fill(color.opacity(0.25))
+                .fill(backgroundColor.opacity(0.25))
                 .frame(width: 60, height: 160)
             
             VStack {
-                Text(title)
+                Text(playerNumber)
                     .font(.caption)
                 
+                Divider()
                 Spacer()
                 
-                Text(isPlayer ? viewModel.playerPoint.value : viewModel.rivalPoint.value)
-                    .font(.title)
+                Text(points)
+                    .font(.title2)
                 
                 Spacer()
                 
-                Button {
-                    isPlayer ? viewModel.currentPointsPlayer(viewModel.playerPoint, viewModel.rivalPoint) :
-                    viewModel.currentPointsRival(viewModel.rivalPoint, viewModel.playerPoint)
-                } label: {
+                Button(action: onPointScored) {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
                         .scaledToFit()
                         .frame(height: 40)
-                        .foregroundStyle(color)
+                        .foregroundStyle(backgroundColor)
                 }
                 .buttonStyle(.plain)
             }

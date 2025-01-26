@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CloseMatchView: View {
     
+    @Binding var viewModel: RegisterMatchViewModel
+    
     var body: some View {
         VStack(spacing: 20) {
             Button {
@@ -41,5 +43,5 @@ struct CloseMatchView: View {
 }
 
 #Preview {
-    CloseMatchView()
+    CloseMatchView(viewModel: .constant(RegisterMatchViewModel()))
 }

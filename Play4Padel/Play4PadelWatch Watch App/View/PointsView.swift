@@ -8,19 +8,36 @@
 import SwiftUI
 
 struct PointsView: View {
-    
-    @State private var viewModel = RegisterMatchViewModel()
+    @Binding var viewModel: RegisterMatchViewModel
     
     var body: some View {
         VStack {
             Spacer()
             
             HStack {
-                PointsSectionView(viewModel: viewModel, color: .principal, title: "Players", isPlayer: true)
+                PlayerPointsSection(
+                    playerNumber: "P1",
+                    backgroundColor: .principal,
+                    points: viewModel.isTieBreak ? String(viewModel.tieBreakPointsPlayer) : viewModel.playerPoint.value,
+                    onPointScored: {
+                        viewModel.currentPointsPlayer(viewModel.playerPoint, viewModel.rivalPoint)
+                    }
+                )
+                .padding(.horizontal)
+                
                 Text("-")
                     .font(.title)
                     .padding(.bottom, 20)
-                PointsSectionView(viewModel: viewModel, color: .blue, title: "Rivals", isPlayer: false)
+                
+                PlayerPointsSection(
+                    playerNumber: "P2",
+                    backgroundColor: .blue,
+                    points: viewModel.isTieBreak ? String(viewModel.tieBreakPointsRival) : viewModel.rivalPoint.value,
+                    onPointScored: {
+                        viewModel.currentPointsRival(viewModel.rivalPoint, viewModel.playerPoint)
+                    }
+                )
+                .padding(.horizontal)
             }
             Spacer()
         }
@@ -28,6 +45,7 @@ struct PointsView: View {
     }
 }
 
+
 #Preview {
-    PointsView()
+    PointsView(viewModel: .constant(RegisterMatchViewModel()))
 }

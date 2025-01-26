@@ -8,48 +8,45 @@
 import SwiftUI
 
 struct SetsViews: View {
+    @Binding var viewModel: RegisterMatchViewModel
+    
     var body: some View {
-        VStack {
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Players:")
-                    .underline()
-                    .font(.body)
-                    .bold()
+        VStack(alignment: .leading) {
+            Text("Sets:")
+                .underline()
+                .bold()
+            
+            HStack(alignment: .firstTextBaseline) {
+                SetSectionView(
+                    playerNumber: "P1",
+                    backgroundColor: .principal,
+                    scores: [
+                        viewModel.firstSetPlayer,
+                        viewModel.secondSetPlayer,
+                        viewModel.thirdSetPlayer
+                    ]
+                )
+                .padding()
                 
-                HStack(spacing: 20) {
-                    Text("Sets:")
-                        .bold()
-                    
-                    Text("0")
-                    
-                    Text("0")
-                    
-                    Text("0")
-                }
+                Text("VS")
+                    .font(.footnote)
                 
-                Spacer()
-                
-                Text("Rivals:")
-                    .underline()
-                    .font(.body)
-                    .bold()
-                
-                HStack(spacing: 20) {
-                    Text("Sets:")
-                        .bold()
-                    
-                    Text("0")
-                    
-                    Text("0")
-                    
-                    Text("0")
-                    
-                }
+                SetSectionView(
+                    playerNumber: "P2",
+                    backgroundColor: .blue,
+                    scores: [
+                        viewModel.firstSetRival,
+                        viewModel.secondSetRival,
+                        viewModel.thirdSetRival
+                    ]
+                )
+                .padding()
             }
         }
+        .id(viewModel.firstSetPlayer + viewModel.secondSetPlayer + viewModel.thirdSetPlayer)
     }
 }
 
 #Preview {
-    SetsViews()
+    SetsViews(viewModel: .constant(RegisterMatchViewModel()))
 }
