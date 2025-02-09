@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct PointsView: View {
-    @Binding var viewModel: RegisterMatchViewModel
+    let viewModel: RegisterMatchViewModel
     
     var body: some View {
         VStack {
             Spacer()
             
             HStack {
-                PlayerPointsSection(
+                PointsSection(
                     playerNumber: "P1",
                     backgroundColor: .principal,
                     points: viewModel.isTieBreak ? String(viewModel.tieBreakPointsPlayer) : viewModel.playerPoint.value,
+                    isDisabled: viewModel.addPointsDisabled,
                     onPointScored: {
-                        viewModel.currentPointsPlayer(viewModel.playerPoint, viewModel.rivalPoint)
+                        viewModel.currentPointsPlayerAction(viewModel.playerPoint, viewModel.rivalPoint)
                     }
                 )
                 .padding(.horizontal)
@@ -29,12 +30,13 @@ struct PointsView: View {
                     .font(.title)
                     .padding(.bottom, 20)
                 
-                PlayerPointsSection(
+                PointsSection(
                     playerNumber: "P2",
                     backgroundColor: .blue,
                     points: viewModel.isTieBreak ? String(viewModel.tieBreakPointsRival) : viewModel.rivalPoint.value,
+                    isDisabled: viewModel.addPointsDisabled,
                     onPointScored: {
-                        viewModel.currentPointsRival(viewModel.rivalPoint, viewModel.playerPoint)
+                        viewModel.currentPointsRivalAction(viewModel.rivalPoint, viewModel.playerPoint)
                     }
                 )
                 .padding(.horizontal)
@@ -47,5 +49,5 @@ struct PointsView: View {
 
 
 #Preview {
-    PointsView(viewModel: .constant(RegisterMatchViewModel()))
+    PointsView(viewModel: RegisterMatchViewModel())
 }

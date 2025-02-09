@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct PlayerPointsSection: View {
+struct PointsSection: View {
     let playerNumber: String
     let backgroundColor: Color
     let points: String
+    let isDisabled: Bool
     let onPointScored: () -> Void
     
     var body: some View {
@@ -39,6 +40,7 @@ struct PlayerPointsSection: View {
                         .foregroundStyle(backgroundColor)
                 }
                 .buttonStyle(.plain)
+                .disabled(isDisabled)
             }
             .padding(.vertical)
         }

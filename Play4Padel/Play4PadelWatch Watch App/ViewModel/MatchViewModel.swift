@@ -11,6 +11,7 @@ import SwiftUI
 final class MatchViewModel {
     
     // MARK: - Properties
+    
     var dataMatch: [MatchData] = []
     
     // MARK: - Functions

@@ -15,7 +15,7 @@ struct MatchSectionView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(match.isVictory == true ? .principal.opacity(0.20) : .red.opacity(0.20))
-                .frame(width: .infinity, height: 110)
+                .frame(height: 110)
                 .padding(.vertical)
             
             VStack(alignment: .leading, spacing: 10) {

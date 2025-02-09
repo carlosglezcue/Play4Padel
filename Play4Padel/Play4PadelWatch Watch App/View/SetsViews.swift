@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SetsViews: View {
-    @Binding var viewModel: RegisterMatchViewModel
+    let viewModel: RegisterMatchViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -48,5 +48,5 @@ struct SetsViews: View {
 }
 
 #Preview {
-    SetsViews(viewModel: .constant(RegisterMatchViewModel()))
+    SetsViews(viewModel: RegisterMatchViewModel())
 }

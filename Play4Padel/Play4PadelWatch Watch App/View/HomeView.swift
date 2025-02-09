@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import HealthKit
 
 struct HomeView: View {
+    
+    @State private var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationStack {
@@ -36,6 +39,14 @@ struct HomeView: View {
                 .tint(.blue)
             }
             .padding()
+        }
+        .task {
+            await viewModel.configureHome()
+        }
+        .alert("Error", isPresented: $viewModel.showError) {
+            Button("OK") {}
+        } message: {
+            Text(viewModel.errorMessage)
         }
     }
 }
