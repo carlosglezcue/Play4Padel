@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2F8B506A2D452B3E00CEE897 /* Play4PadelWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2F8B50472D452B3C00CEE897 /* Play4PadelWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2F32D6E92CD6399E00832951 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,12 +25,50 @@
 			remoteGlobalIDString = 2F32D6D32CD6399A00832951;
 			remoteInfo = Play4Padel;
 		};
+		2F8B50572D452B3E00CEE897 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F32D6CC2CD6399A00832951 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F8B50462D452B3C00CEE897;
+			remoteInfo = "Play4PadelWatch Watch App";
+		};
+		2F8B50612D452B3E00CEE897 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F32D6CC2CD6399A00832951 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F8B50462D452B3C00CEE897;
+			remoteInfo = "Play4PadelWatch Watch App";
+		};
+		2F8B50682D452B3E00CEE897 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F32D6CC2CD6399A00832951 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F8B50462D452B3C00CEE897;
+			remoteInfo = "Play4PadelWatch Watch App";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2F8B506B2D452B3E00CEE897 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				2F8B506A2D452B3E00CEE897 /* Play4PadelWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2F32D6D42CD6399A00832951 /* Play4Padel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play4Padel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F32D6E82CD6399E00832951 /* Play4PadelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Play4PadelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F32D6F22CD6399E00832951 /* Play4PadelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Play4PadelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F8B50472D452B3C00CEE897 /* Play4PadelWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Play4PadelWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F8B50562D452B3E00CEE897 /* Play4PadelWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Play4PadelWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F8B50602D452B3E00CEE897 /* Play4PadelWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Play4PadelWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -37,6 +79,16 @@
 			);
 			target = 2F32D6D32CD6399A00832951 /* Play4Padel */;
 		};
+		2F394CEB2D456E3800E91E16 /* Exceptions for "Play4Padel" folder in "Play4PadelWatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Common/Extension/Number+.swift",
+				"Common/Extension/String+.swift",
+				Model/MatchData.swift,
+				"Preview Content/SampleData.swift",
+			);
+			target = 2F8B50462D452B3C00CEE897 /* Play4PadelWatch Watch App */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,6 +96,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				2F32D6FA2CD6399E00832951 /* Exceptions for "Play4Padel" folder in "Play4Padel" target */,
+				2F394CEB2D456E3800E91E16 /* Exceptions for "Play4Padel" folder in "Play4PadelWatch Watch App" target */,
 			);
 			path = Play4Padel;
 			sourceTree = "<group>";
@@ -56,6 +109,21 @@
 		2F32D6F52CD6399E00832951 /* Play4PadelUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Play4PadelUITests;
+			sourceTree = "<group>";
+		};
+		2F8B50482D452B3C00CEE897 /* Play4PadelWatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Play4PadelWatch Watch App";
+			sourceTree = "<group>";
+		};
+		2F8B50592D452B3E00CEE897 /* Play4PadelWatch Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Play4PadelWatch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		2F8B50632D452B3E00CEE897 /* Play4PadelWatch Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Play4PadelWatch Watch AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -82,6 +150,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F8B50442D452B3C00CEE897 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F8B50532D452B3E00CEE897 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F8B505D2D452B3E00CEE897 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +180,9 @@
 				2F32D6D62CD6399A00832951 /* Play4Padel */,
 				2F32D6EB2CD6399E00832951 /* Play4PadelTests */,
 				2F32D6F52CD6399E00832951 /* Play4PadelUITests */,
+				2F8B50482D452B3C00CEE897 /* Play4PadelWatch Watch App */,
+				2F8B50592D452B3E00CEE897 /* Play4PadelWatch Watch AppTests */,
+				2F8B50632D452B3E00CEE897 /* Play4PadelWatch Watch AppUITests */,
 				2F32D6D52CD6399A00832951 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +193,9 @@
 				2F32D6D42CD6399A00832951 /* Play4Padel.app */,
 				2F32D6E82CD6399E00832951 /* Play4PadelTests.xctest */,
 				2F32D6F22CD6399E00832951 /* Play4PadelUITests.xctest */,
+				2F8B50472D452B3C00CEE897 /* Play4PadelWatch Watch App.app */,
+				2F8B50562D452B3E00CEE897 /* Play4PadelWatch Watch AppTests.xctest */,
+				2F8B50602D452B3E00CEE897 /* Play4PadelWatch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,10 +210,12 @@
 				2F32D6D02CD6399A00832951 /* Sources */,
 				2F32D6D12CD6399A00832951 /* Frameworks */,
 				2F32D6D22CD6399A00832951 /* Resources */,
+				2F8B506B2D452B3E00CEE897 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2F8B50692D452B3E00CEE897 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2F32D6D62CD6399A00832951 /* Play4Padel */,
@@ -176,6 +273,74 @@
 			productReference = 2F32D6F22CD6399E00832951 /* Play4PadelUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		2F8B50462D452B3C00CEE897 /* Play4PadelWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F8B50722D452B3E00CEE897 /* Build configuration list for PBXNativeTarget "Play4PadelWatch Watch App" */;
+			buildPhases = (
+				2F8B50432D452B3C00CEE897 /* Sources */,
+				2F8B50442D452B3C00CEE897 /* Frameworks */,
+				2F8B50452D452B3C00CEE897 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2F8B50482D452B3C00CEE897 /* Play4PadelWatch Watch App */,
+			);
+			name = "Play4PadelWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "Play4PadelWatch Watch App";
+			productReference = 2F8B50472D452B3C00CEE897 /* Play4PadelWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2F8B50552D452B3E00CEE897 /* Play4PadelWatch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F8B50732D452B3E00CEE897 /* Build configuration list for PBXNativeTarget "Play4PadelWatch Watch AppTests" */;
+			buildPhases = (
+				2F8B50522D452B3E00CEE897 /* Sources */,
+				2F8B50532D452B3E00CEE897 /* Frameworks */,
+				2F8B50542D452B3E00CEE897 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F8B50582D452B3E00CEE897 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2F8B50592D452B3E00CEE897 /* Play4PadelWatch Watch AppTests */,
+			);
+			name = "Play4PadelWatch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "Play4PadelWatch Watch AppTests";
+			productReference = 2F8B50562D452B3E00CEE897 /* Play4PadelWatch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2F8B505F2D452B3E00CEE897 /* Play4PadelWatch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F8B50742D452B3E00CEE897 /* Build configuration list for PBXNativeTarget "Play4PadelWatch Watch AppUITests" */;
+			buildPhases = (
+				2F8B505C2D452B3E00CEE897 /* Sources */,
+				2F8B505D2D452B3E00CEE897 /* Frameworks */,
+				2F8B505E2D452B3E00CEE897 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F8B50622D452B3E00CEE897 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2F8B50632D452B3E00CEE897 /* Play4PadelWatch Watch AppUITests */,
+			);
+			name = "Play4PadelWatch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "Play4PadelWatch Watch AppUITests";
+			productReference = 2F8B50602D452B3E00CEE897 /* Play4PadelWatch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -183,7 +348,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					2F32D6D32CD6399A00832951 = {
@@ -196,6 +361,17 @@
 					2F32D6F12CD6399E00832951 = {
 						CreatedOnToolsVersion = 16.1;
 						TestTargetID = 2F32D6D32CD6399A00832951;
+					};
+					2F8B50462D452B3C00CEE897 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					2F8B50552D452B3E00CEE897 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 2F8B50462D452B3C00CEE897;
+					};
+					2F8B505F2D452B3E00CEE897 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 2F8B50462D452B3C00CEE897;
 					};
 				};
 			};
@@ -216,6 +392,9 @@
 				2F32D6D32CD6399A00832951 /* Play4Padel */,
 				2F32D6E72CD6399E00832951 /* Play4PadelTests */,
 				2F32D6F12CD6399E00832951 /* Play4PadelUITests */,
+				2F8B50462D452B3C00CEE897 /* Play4PadelWatch Watch App */,
+				2F8B50552D452B3E00CEE897 /* Play4PadelWatch Watch AppTests */,
+				2F8B505F2D452B3E00CEE897 /* Play4PadelWatch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +415,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2F32D6F02CD6399E00832951 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F8B50452D452B3C00CEE897 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F8B50542D452B3E00CEE897 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F8B505E2D452B3E00CEE897 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -266,6 +466,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F8B50432D452B3C00CEE897 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F8B50522D452B3E00CEE897 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F8B505C2D452B3E00CEE897 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -278,6 +499,21 @@
 			isa = PBXTargetDependency;
 			target = 2F32D6D32CD6399A00832951 /* Play4Padel */;
 			targetProxy = 2F32D6F32CD6399E00832951 /* PBXContainerItemProxy */;
+		};
+		2F8B50582D452B3E00CEE897 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F8B50462D452B3C00CEE897 /* Play4PadelWatch Watch App */;
+			targetProxy = 2F8B50572D452B3E00CEE897 /* PBXContainerItemProxy */;
+		};
+		2F8B50622D452B3E00CEE897 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F8B50462D452B3C00CEE897 /* Play4PadelWatch Watch App */;
+			targetProxy = 2F8B50612D452B3E00CEE897 /* PBXContainerItemProxy */;
+		};
+		2F8B50692D452B3E00CEE897 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F8B50462D452B3C00CEE897 /* Play4PadelWatch Watch App */;
+			targetProxy = 2F8B50682D452B3E00CEE897 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -537,6 +773,144 @@
 			};
 			name = Release;
 		};
+		2F8B506C2D452B3E00CEE897 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Play4PadelWatch Watch App/Play4PadelWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Play4PadelWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Play4PadelWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Play4PadelWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = carlosglezc.Play4Padel;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = carlosglezc.Play4Padel.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		2F8B506D2D452B3E00CEE897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Play4PadelWatch Watch App/Play4PadelWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Play4PadelWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Play4PadelWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Play4PadelWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = carlosglezc.Play4Padel;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = carlosglezc.Play4Padel.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		2F8B506E2D452B3E00CEE897 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "carlosglezc.Play4PadelWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Play4PadelWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Play4PadelWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		2F8B506F2D452B3E00CEE897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "carlosglezc.Play4PadelWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Play4PadelWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Play4PadelWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		2F8B50702D452B3E00CEE897 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "carlosglezc.Play4PadelWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Play4PadelWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		2F8B50712D452B3E00CEE897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "carlosglezc.Play4PadelWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Play4PadelWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -572,6 +946,33 @@
 			buildConfigurations = (
 				2F32D7042CD6399E00832951 /* Debug */,
 				2F32D7052CD6399E00832951 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F8B50722D452B3E00CEE897 /* Build configuration list for PBXNativeTarget "Play4PadelWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F8B506C2D452B3E00CEE897 /* Debug */,
+				2F8B506D2D452B3E00CEE897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F8B50732D452B3E00CEE897 /* Build configuration list for PBXNativeTarget "Play4PadelWatch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F8B506E2D452B3E00CEE897 /* Debug */,
+				2F8B506F2D452B3E00CEE897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F8B50742D452B3E00CEE897 /* Build configuration list for PBXNativeTarget "Play4PadelWatch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F8B50702D452B3E00CEE897 /* Debug */,
+				2F8B50712D452B3E00CEE897 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
