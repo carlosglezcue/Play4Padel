@@ -31,6 +31,12 @@ struct TabBarView: View {
             }
             .tint(.tabBarTint)
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+                Task {
+                    try await viewModel.getPlayerPosition()
+                    try await viewModel.getNickname()
+                }
+            }
     }
 }
 

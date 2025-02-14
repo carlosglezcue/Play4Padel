@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MatchInfoView: View {
     
-    let firstSubsection: String
-    let secondSubsection: String
-    let thirdSubsection: String
+    let firstSubsection: LocalizedStringKey
+    let secondSubsection: LocalizedStringKey
+    let thirdSubsection: LocalizedStringKey
     
     @Binding var firstData: String
     @Binding var secondData: String

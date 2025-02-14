@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HeaderView: View {
     
-    let section: String
+    let section: LocalizedStringKey
     let subsection: String
     
     var body: some View {

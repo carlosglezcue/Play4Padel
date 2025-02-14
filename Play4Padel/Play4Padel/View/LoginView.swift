@@ -16,11 +16,10 @@ struct LoginView: View {
     
     var body: some View {
         if deviceIdiom == .pad {
-            LoginBigDeviceComponent(viewModel: $viewModel)
+            LoginBigDeviceComponent(viewModel: viewModel)
         } else {
-            LoginPhoneComponent(viewModel: $viewModel)
-        }
-        
+            LoginPhoneComponent(viewModel: viewModel)
+        }   
     }
 }
 

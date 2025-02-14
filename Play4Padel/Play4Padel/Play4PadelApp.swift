@@ -11,6 +11,8 @@ import SwiftData
 @main
 struct Play4PadelApp: App {
     
+    @Environment(\.scenePhase) var scenePhase
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([MatchData.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -25,6 +27,11 @@ struct Play4PadelApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .overlay {
+                    if scenePhase != .active {
+                        SplashView()
+                    }
+                }
         }
         .modelContainer(sharedModelContainer)
     }

@@ -19,6 +19,7 @@ enum CourtType: String, Codable, CaseIterable, Identifiable {
 enum PositionType: String, Codable, CaseIterable, Identifiable {
     case backhand = "Backhand"
     case drive = "Drive"
+    case both = "Both sides"
     case none
     
     var id: Self { self }

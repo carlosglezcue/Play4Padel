@@ -13,37 +13,50 @@ final class HomeViewModel {
     
     // MARK: - Properties
     var registerMatch: Bool = false
-    var userFirstSet: String = ""
-    var userSecondSet: String = ""
-    var userThirdSet: String = ""
-    var rivalFirstSet: String = ""
-    var rivalSecondSet: String = ""
-    var rivalThirdSet: String = ""
+    var userFirstSet: Int = .zero
+    var userSecondSet: Int = .zero
+    var userThirdSet: Int = .zero
+    var rivalFirstSet: Int = .zero
+    var rivalSecondSet: Int = .zero
+    var rivalThirdSet: Int = .zero
     var dateInfo: Date = .now
-    var courtTypeSelected: CourtType = .none
-    var positionSelected: PositionType = .none
+    var courtTypeSelected: TypeCourt = .none
+    var positionSelected: PlayerPositionType = .none
     var isVisible: Bool = true
+    var errorToSave: Bool = false
     
     // MARK: - Functions
     
     private func getUserTotalGamesInMatch() -> Int {
-        let firstSet = Int(userFirstSet)
-        let secondSet = Int(userSecondSet)
-        let thirdSet = Int(userThirdSet)
-        guard let firstSet, let secondSet, let thirdSet else { return .zero }
-        return firstSet + secondSet + thirdSet
+        return userFirstSet + userSecondSet + userThirdSet
     }
     
     private func getRivalTotalGamesInMatch() -> Int {
-        let firstSet = Int(rivalFirstSet)
-        let secondSet = Int(rivalSecondSet)
-        let thirdSet = Int(rivalThirdSet)
-        guard let firstSet, let secondSet, let thirdSet else { return .zero }
-        return firstSet + secondSet + thirdSet
+        return rivalFirstSet + rivalSecondSet + rivalThirdSet
     }
     
     private func getVictory() -> Bool {
         return getUserTotalGamesInMatch() > getRivalTotalGamesInMatch()
+    }
+    
+    private func saveMatchData(_ context: ModelContext) {
+        let newMatchData = MatchData(
+            id: UUID(),
+            firstUserSet: userFirstSet,
+            secondUserSet: userSecondSet,
+            thirdUserSet: userThirdSet,
+            totalUserGames: getUserTotalGamesInMatch(),
+            firstRivalSet: rivalFirstSet,
+            secondRivalSet: rivalSecondSet,
+            thirdRivalSet: rivalThirdSet,
+            totalRivalGames: getRivalTotalGamesInMatch(),
+            isVictory: getVictory(),
+            position: positionSelected.toData(),
+            courtType: courtTypeSelected.toData()
+        )
+        
+        context.insert(newMatchData)
+        registerMatch = false
     }
     
     // MARK: - Actions
@@ -52,23 +65,17 @@ final class HomeViewModel {
         registerMatch.toggle()
     }
     
-    func saveMatchDataAction(_ context: ModelContext) {
-        let newMatchData = MatchData(
-            id: UUID(),
-            firstUserSet: Int(userFirstSet),
-            secondUserSet: Int(userSecondSet),
-            thirdUserSet: Int(userThirdSet),
-            totalUserGames: getUserTotalGamesInMatch(),
-            firstRivalSet: Int(rivalFirstSet),
-            secondRivalSet: Int(rivalSecondSet),
-            thirdRivalSet: Int(rivalThirdSet),
-            totalRivalGames: getRivalTotalGamesInMatch(),
-            isVictory: getVictory(),
-            position: positionSelected,
-            courtType: courtTypeSelected
-        )
+    func saveMatchAction(_ context: ModelContext) {
+        let firsSetCorrect: Bool = userFirstSet <= 7 && rivalFirstSet <= 7 && userFirstSet != rivalFirstSet
+        let secondSetCorrect: Bool = userSecondSet <= 7 && rivalSecondSet <= 7 && userSecondSet != rivalSecondSet
+        let thirdSetCorrect: Bool = userThirdSet <= 7 && rivalThirdSet <= 7
+        let lastSetCorrect: Bool = userThirdSet != rivalThirdSet || (userThirdSet == .zero && rivalThirdSet == .zero)
         
-        context.insert(newMatchData)
+        if firsSetCorrect && secondSetCorrect && thirdSetCorrect && lastSetCorrect {
+            saveMatchData(context)
+        } else {
+            errorToSave = true
+        }
     }
     
     func hideReminderAction() {

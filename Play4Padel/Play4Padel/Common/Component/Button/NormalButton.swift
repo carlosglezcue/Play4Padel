@@ -10,7 +10,7 @@ import SwiftUI
 struct NormalButton: View {
     
     let buttonAction: () -> ()
-    let title: String
+    let title: LocalizedStringKey
     let width: CGFloat
     let style: ButtonStyle
     

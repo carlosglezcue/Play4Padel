@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SetSectionView: View {
-    let playerNumber: String
+    let playerNumber: LocalizedStringKey
     let backgroundColor: Color
     let scores: [Int]
     

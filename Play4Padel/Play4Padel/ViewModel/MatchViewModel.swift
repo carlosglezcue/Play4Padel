@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum MatchSection: String, CaseIterable, Identifiable {
+enum MatchSection: LocalizedStringKey, CaseIterable, Identifiable {
     case date = "Date"
     case wins = "Wins"
     case calories = "Calories"

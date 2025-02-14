@@ -22,21 +22,11 @@ struct ProfileView: View {
             )
             
             VStack {
-                if let image = viewModel.getImage() {
-                    Image(image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 200)
-                        .padding(.top)
-                        .clipShape(Circle())
-                        .padding(.top)
-                } else {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 150)
-                        .padding(.top)
-                }
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 75)
+                    .padding(.top)
                 
                 Group {
                     HStack {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailInfoMatchComponent: View {
     
-    let dataType: String
+    let dataType: LocalizedStringKey
     let teamData: Int
     let rivalData: Int
     

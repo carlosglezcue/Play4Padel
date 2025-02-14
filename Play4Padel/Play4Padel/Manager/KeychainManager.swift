@@ -18,7 +18,6 @@ import Security
 /// let token: String? = try await manager.get(forKey: "auth.token")
 /// ```
 actor KeychainManager {
-    
     /// Represents possible errors that can occur during Keychain operations.
     enum KeychainError: Error {
         case storageError(OSStatus)
@@ -35,22 +34,23 @@ actor KeychainManager {
     func set<T: Codable>(_ value: T, forKey key: String) async throws {
         let data = try JSONEncoder().encode(value)
         
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: key,
-            kSecValueData as String: data
+        let query: [CFString: Any] = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: key,
+            kSecValueData: data,
+            kSecAttrAccessible: kSecAttrAccessibleAfterFirstUnlock
         ]
         
         let status = SecItemAdd(query as CFDictionary, nil)
         
         if status == errSecDuplicateItem {
-            let updateQuery: [String: Any] = [
-                kSecClass as String: kSecClassGenericPassword,
-                kSecAttrAccount as String: key
+            let updateQuery: [CFString: Any] = [
+                kSecClass: kSecClassGenericPassword,
+                kSecAttrAccount: key
             ]
             
-            let attributesToUpdate: [String: Any] = [
-                kSecValueData as String: data
+            let attributesToUpdate: [CFString: Any] = [
+                kSecValueData: data
             ]
             
             let updateStatus = SecItemUpdate(
@@ -71,10 +71,11 @@ actor KeychainManager {
     /// - Returns: The stored value if found and successfully decoded.
     /// - Throws: ``KeychainError`` if the retrieval operation fails.
     func get<T: Codable>(forKey key: String) async throws -> T? {
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: key,
-            kSecReturnData as String: true
+        let query: [CFString: Any] = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: key,
+            kSecReturnData: kCFBooleanTrue as Any,
+            kSecMatchLimit: kSecMatchLimitOne
         ]
         
         var result: AnyObject?
@@ -98,9 +99,9 @@ actor KeychainManager {
     /// - Parameter key: The key associated with the value to remove.
     /// - Throws: ``KeychainError`` if the removal operation fails.
     func remove(forKey key: String) async throws {
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: key
+        let query: [CFString: Any] = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: key
         ]
         
         let status = SecItemDelete(query as CFDictionary)

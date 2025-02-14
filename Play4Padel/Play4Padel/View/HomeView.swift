@@ -20,7 +20,7 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: .zero) {
             HeaderView(
                 section: "Hello",
-                subsection: "Carlos"
+                subsection: ""
             )
             
             ScrollView {
@@ -100,7 +100,16 @@ struct HomeView: View {
                     dateInfo: $viewModel.dateInfo,
                     courtTypeSelected: $viewModel.courtTypeSelected,
                     positionSelected: $viewModel.positionSelected,
-                    saveAction: { viewModel.saveMatchDataAction(context) }
+                    saveAction: { viewModel.saveMatchAction(context) }
+                )
+                .alert( "Error saving match",
+                        isPresented: $viewModel.errorToSave,
+                        actions: {
+                    Button("Ok", role: .none) { }
+                },
+                        message: {
+                    Text("Review the data you entered and try again.")
+                }
                 )
             }
         }

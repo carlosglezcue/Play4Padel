@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MatchInfoComponent: View {
     
-    let text: String
+    let text: LocalizedStringKey
     @Binding var data: String
     
     var body: some View {

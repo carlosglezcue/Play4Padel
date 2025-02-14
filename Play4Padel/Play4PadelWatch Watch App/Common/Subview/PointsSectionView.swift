@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PointsSection: View {
-    let playerNumber: String
+    let playerNumber: LocalizedStringKey
     let backgroundColor: Color
     let points: String
     let isDisabled: Bool

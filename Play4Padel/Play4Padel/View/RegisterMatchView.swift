@@ -13,15 +13,15 @@ struct RegisterMatchView: View {
     
     @DeviceIdiom private var deviceIdiom
     
-    @Binding var userFirstSet: String
-    @Binding var userSecondSet: String
-    @Binding var userThirdSet: String
-    @Binding var rivalFirstSet: String
-    @Binding var rivalSecondSet: String
-    @Binding var rivalThirdSet: String
+    @Binding var userFirstSet: Int
+    @Binding var userSecondSet: Int
+    @Binding var userThirdSet: Int
+    @Binding var rivalFirstSet: Int
+    @Binding var rivalSecondSet: Int
+    @Binding var rivalThirdSet: Int
     @Binding var dateInfo: Date
-    @Binding var courtTypeSelected: CourtType
-    @Binding var positionSelected: PositionType
+    @Binding var courtTypeSelected: TypeCourt
+    @Binding var positionSelected: PlayerPositionType
     
     let saveAction: () -> ()
     
@@ -64,14 +64,14 @@ struct RegisterMatchView: View {
                         Text("Position played:")
                         Spacer()
                         Menu {
-                            ForEach([CourtType.indoor, CourtType.outdoor], id: \.self) { type in
-                                Button(type.rawValue) {
-                                    courtTypeSelected = type
+                            ForEach([PlayerPositionType.backhand, PlayerPositionType.drive, PlayerPositionType.both], id: \.self) { position in
+                                Button(position.rawValue) {
+                                    positionSelected = position
                                 }
                             }
                         } label: {
-                            Text("Select court type")
-                                .foregroundStyle(.gray)
+                            Text(positionSelected == .none ? "Select position" : positionSelected.toView())
+                                .foregroundStyle(positionSelected == .none ? .gray : .primary)
                         }
                     }
                     
@@ -79,14 +79,14 @@ struct RegisterMatchView: View {
                         Text("Court Type:")
                         Spacer()
                         Menu {
-                            ForEach([PositionType.backhand, PositionType.drive], id: \.self) { position in
-                                Button(position.rawValue) {
-                                    positionSelected = position
+                            ForEach([TypeCourt.indoor, TypeCourt.outdoor], id: \.self) { type in
+                                Button(type.rawValue) {
+                                    courtTypeSelected = type
                                 }
                             }
                         } label: {
-                            Text("Select position")
-                                .foregroundStyle(.gray)
+                            Text(courtTypeSelected == .none ? "Select court" : courtTypeSelected.toView())
+                                .foregroundStyle(courtTypeSelected == .none ? .gray : .primary)
                         }
                     }
                     
@@ -106,7 +106,9 @@ struct RegisterMatchView: View {
             
             HStack {
                 NormalButton(
-                    buttonAction: { saveAction() },
+                    buttonAction: {
+                        saveAction()
+                    },
                     title: "Save",
                     width: 100,
                     style: PrincipalButton()
@@ -133,15 +135,15 @@ struct RegisterMatchView: View {
 
 #Preview {
     RegisterMatchView(
-        userFirstSet: .constant(""),
-        userSecondSet: .constant(""),
-        userThirdSet: .constant(""),
-        rivalFirstSet: .constant(""),
-        rivalSecondSet: .constant(""),
-        rivalThirdSet: .constant(""),
+        userFirstSet: .constant(.zero),
+        userSecondSet: .constant(.zero),
+        userThirdSet: .constant(.zero),
+        rivalFirstSet: .constant(.zero),
+        rivalSecondSet: .constant(.zero),
+        rivalThirdSet: .constant(.zero),
         dateInfo: .constant(.now),
-        courtTypeSelected: .constant(.indoor),
-        positionSelected: .constant(.backhand),
+        courtTypeSelected: .constant(.none),
+        positionSelected: .constant(.none),
         saveAction: { }
     )
 }

@@ -20,7 +20,7 @@ final class UserViewModel {
     private let keychain = KeychainManager()
     private var session: UserSession?
     
-    var screenState: MainScreenState = .login
+    var screenState: MainScreenState = .setup
     var screenType: SetupUserState = .welcome
     var selectedPositionType: PlayerPositionType = .both
     var reedPrivacyPolicy: Bool = false
@@ -32,20 +32,21 @@ final class UserViewModel {
     // MARK: - Functions
     
     func loadData() async throws {
-        do {
-            session = try await keychain.get(forKey: KeychainConstant.session)
-            if session != nil {
-                screenState = await getSetupState() ? .home : .setup
-            } else {
-                screenState = .login
-            }
-        } catch {
-            screenState = .login
-        }
+        screenState = await getSetupState() ? .home : .setup
+//        do {
+//            session = try await keychain.get(forKey: KeychainConstant.session)
+//            if session != nil {
+//                screenState = await getSetupState() ? .home : .setup
+//            } else {
+//                screenState = .login
+//            }
+//        } catch {
+//            screenState = .login
+//        }
     }
     
     private func savePlayerPosition(_ positionSelected: PlayerPositionType) async throws {
-        try await keychain.set(positionSelected.rawValue, forKey: KeychainConstant.playerPosition)
+        try await keychain.set(positionSelected.toSave(), forKey: KeychainConstant.playerPosition)
     }
     
     private func saveSetupSatate() async {
@@ -99,20 +100,13 @@ final class UserViewModel {
         try await keychain.set(session, forKey: KeychainConstant.session)
     }
     
-    func getNickname() async throws -> String {
+    func getNickname() async throws {
         let user: UserSession? = try await keychain.get(forKey: KeychainConstant.session)
-        let username = user?.fullName?.nickname ?? .empty
-        return username
+        username = user?.fullName?.nickname ?? .empty
     }
     
-    func getImage() -> ImageResource? {
-        // TODO: Add logic to get the image saved
-        return nil
-    }
-    
-    func getPlayerPosition() async throws -> String {
-        let value: String = try await keychain.get(forKey: KeychainConstant.playerPosition) ?? ""
-        return value
+    func getPlayerPosition() async throws {
+        playerPosition = try await keychain.get(forKey: KeychainConstant.playerPosition) ?? ""
     }
     
     // MARK: - Actions

@@ -10,7 +10,7 @@ import AuthenticationServices
 
 struct LoginPhoneComponent: View {
     
-    @Binding var viewModel: UserViewModel
+    let viewModel: UserViewModel
     @State private var isAnimating = false
     
     var body: some View {
@@ -57,7 +57,7 @@ struct LoginPhoneComponent: View {
 
 struct LoginBigDeviceComponent: View {
     
-    @Binding var viewModel: UserViewModel
+    let viewModel: UserViewModel
     @State private var isAnimating = false
     
     var body: some View {

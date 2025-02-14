@@ -14,7 +14,6 @@ struct PadelCourt2DView: View {
             let courtHeight = courtWidth * 1.5  // Manteniendo proporciones 20x10
             
             ZStack {
-                // Fondo de la cancha
                 Rectangle()
                     .fill(Color.blue)
                     .frame(width: courtWidth, height: courtHeight)
@@ -23,13 +22,11 @@ struct PadelCourt2DView: View {
                             .stroke(Color.darkBlack, lineWidth: 3)
                     )
                 
-                // Línea central horizontal (para dividir las mitades)
                 Rectangle()
                     .fill(Color.white)
                     .frame(width: courtWidth, height: 4)
                     .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                 
-                // Líneas horizontales de los cuadros de servicio
                 Rectangle()
                     .fill(Color.white)
                     .frame(width: courtWidth, height: 4)
@@ -40,7 +37,6 @@ struct PadelCourt2DView: View {
                     .frame(width: courtWidth, height: 4)
                     .position(x: geometry.size.width / 2, y: geometry.size.height / 2 + courtHeight / 3)
                 
-                // Línea central vertical (para dividir los cuadros de servicio)
                 Rectangle()
                     .fill(Color.white)
                     .frame(width: 4, height: courtHeight * 0.7)

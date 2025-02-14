@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailVictoryInfoComponent: View {
     
-    let dataType: String
+    let dataType: LocalizedStringKey
     let isVictory: Bool
     
     var body: some View {

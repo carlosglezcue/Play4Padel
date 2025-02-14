@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LargeIconButton: View {
     
-    let title: String
+    let title: LocalizedStringKey
     let buttonAction: () -> ()
     
     var body: some View {

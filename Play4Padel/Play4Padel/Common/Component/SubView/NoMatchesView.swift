@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoMatchesView: View {
     
-    let title: String
+    let title: LocalizedStringKey
     
     var body: some View {
         ZStack {
